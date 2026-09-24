@@ -1,29 +1,4 @@
 // balloon_game/app.js
-//
-// Real-camera version of the "Balloon Sign Catch" design mockup
-// (claude.ai/artifact/8zYsfgSsBCLz4R7S544J8x). Three random words'
-// reference sequences are fetched from dataset/skeletons/<word>.json --
-// hip-line-cropped skeleton data baked offline by precompute_skeletons.py
-// (IMAGE-mode MediaPipe, run once ahead of time), so the browser never
-// builds/runs the handImage/poseImage detectors itself; then the webcam
-// (VIDEO-mode) watches for an at-least-one-wrist-up -> both-wrists-down
-// attempt, scores it against the current word's precomputed sequence the
-// same way test_dtw_lasso_similarity.py does, and decides correct/not correct.
-// Each new balloon (including the very first) requires both wrists to be
-// confirmed *down* before it starts watching for an attempt -- so a hand
-// still raised from the previous balloon can't immediately trigger a new
-// one. The hip line itself is always drawn the same color (pink) whenever
-// it's visible; it no longer indicates armed-vs-waiting. Both the
-// "confirmed down" and "confirmed up" checks additionally require the hip
-// line to actually be visible (pose detected) -- an empty frame with no
-// one in it must never be treated as "hands down", or a game that starts
-// with nobody on camera would instantly arm itself. The balloon itself
-// stays off-screen (and its fall timer doesn't start) until the hip line
-// is confirmed visible. A "กรุณายืนตรงแล้วให้เห็นถึงมือ" ("please stand
-// up straight so your hands are visible") hint shows on-screen for as long
-// as the hip line isn't visible.
-// See CLAUDE.md's IMAGE-vs-VIDEO-mode rule -- this file is the reason
-// hip_line.js / wrist_score.js / dtw.js's joint-set param exist.
 
 import { loadMediaPipe } from "../shared/common/mediapipe_loader.js";
 import {
