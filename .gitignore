@@ -1,1 +1,3 @@
 web/dataset/*.mp4
+.DS_Store
+.gitignore
