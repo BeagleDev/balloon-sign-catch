@@ -1,7 +1,3 @@
-/* balloon_game/style.css — carnival palette carried over from the design
-   mockup (claude.ai/artifact/8zYsfgSsBCLz4R7S544J8x), wired to a real
-   webcam feed + real reference clips instead of placeholders. */
-
 :root{
   color-scheme: light;
   --page-bg: #F6F2E9;
