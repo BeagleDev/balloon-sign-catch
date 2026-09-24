@@ -16,7 +16,7 @@ match the word exactly as it appears in `web/word_list.json` and in
 ### 2. Serve it
 
 ```bash
-cd balloon_game
+cd balloon-sign-catch
 python3 -m http.server 8000
 ```
 
