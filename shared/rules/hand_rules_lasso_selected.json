@@ -1,0 +1,658 @@
+{
+  "source": "lasso_selected",
+  "meta": {
+    "n_features": 36,
+    "notes": "Thresholds picked by Youden's J on the training |diff|; coefficients from LASSO joint fit. LASSO-selected only."
+  },
+  "features": [
+    {
+      "name": "bone_ori_18_19_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 18,
+        "b": 19,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        18,
+        19
+      ],
+      "direction": "<=",
+      "threshold": 27.559342,
+      "coef": -0.5218682474782421,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_1_20_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 1,
+        "b": 20
+      },
+      "involves": [
+        1,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.16545626,
+      "coef": -0.2899115652550695,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "thumb_to_12",
+      "kind": "distance",
+      "params": {
+        "a": 4,
+        "b": 12
+      },
+      "involves": [
+        4,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.085888147,
+      "coef": -0.3762973030603348,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tip_to_wrist_16_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 0,
+        "b": 16
+      },
+      "involves": [
+        0,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.16753166,
+      "coef": -0.1887913754868342,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_11_20_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 11,
+        "b": 20
+      },
+      "involves": [
+        11,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.16594254,
+      "coef": -0.186109477717422,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_2_12_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 2,
+        "b": 12
+      },
+      "involves": [
+        2,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.22079814,
+      "coef": -0.0496825347912071,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_12_19_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 12,
+        "b": 19
+      },
+      "involves": [
+        12,
+        19
+      ],
+      "direction": "<=",
+      "threshold": 0.18954607,
+      "coef": -0.1690526898548885,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "thumb_to_16",
+      "kind": "distance",
+      "params": {
+        "a": 4,
+        "b": 16
+      },
+      "involves": [
+        4,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.094551668,
+      "coef": -0.0517751468288492,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_16_20",
+      "kind": "distance",
+      "params": {
+        "a": 16,
+        "b": 20
+      },
+      "involves": [
+        16,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.033799835,
+      "coef": -0.0621641875747207,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_8_12",
+      "kind": "distance",
+      "params": {
+        "a": 8,
+        "b": 12
+      },
+      "involves": [
+        8,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.078142494,
+      "coef": -0.0968922230769629,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_10_11_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 10,
+        "b": 11,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        10,
+        11
+      ],
+      "direction": "<=",
+      "threshold": 13.317482,
+      "coef": -0.1250232379149168,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_14_15_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 14,
+        "b": 15,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        14,
+        15
+      ],
+      "direction": "<=",
+      "threshold": 43.915476,
+      "coef": -0.0928415256685053,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_8_12_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 8,
+        "b": 12
+      },
+      "involves": [
+        8,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.2009142,
+      "coef": -0.2458630720514054,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_12_18_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 12,
+        "b": 18
+      },
+      "involves": [
+        12,
+        18
+      ],
+      "direction": "<=",
+      "threshold": 0.15561413,
+      "coef": -0.0072085305327469,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_3_4_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 3,
+        "b": 4,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        3,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 28.909459,
+      "coef": -0.3071481181898069,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_8_20_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 8,
+        "b": 20
+      },
+      "involves": [
+        8,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.23926257,
+      "coef": -0.1429998682203711,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_8_12_over_5_9",
+      "kind": "distance_over_pair",
+      "params": {
+        "a": 8,
+        "b": 12,
+        "p": 5,
+        "q": 9
+      },
+      "involves": [
+        8,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.83170032,
+      "coef": -0.2343255532616145,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_6_7_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 6,
+        "b": 7,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        6,
+        7
+      ],
+      "direction": "<=",
+      "threshold": 17.631946,
+      "coef": -0.1324436323699001,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "ext_ratio_ring",
+      "kind": "extension_ratio",
+      "params": {
+        "bones": [
+          [
+            13,
+            14
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            15,
+            16
+          ]
+        ],
+        "mcp": 13,
+        "tip": 16
+      },
+      "involves": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.20490779,
+      "coef": -0.3261184895240829,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tipdist_16_18_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 16,
+        "b": 18
+      },
+      "involves": [
+        16,
+        18
+      ],
+      "direction": "<=",
+      "threshold": 0.10601448,
+      "coef": -0.0315964602488094,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_12_16",
+      "kind": "distance",
+      "params": {
+        "a": 12,
+        "b": 16
+      },
+      "involves": [
+        12,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.072323531,
+      "coef": -0.3581885748765734,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "angle_span_9_10_12",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 9,
+        "j": 10,
+        "c": 12
+      },
+      "involves": [
+        9,
+        10,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 20.077439,
+      "coef": -0.0539533459235037,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_7_8_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 7,
+        "b": 8,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        7,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 15.466244,
+      "coef": -0.0055644138659882,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "angle_2",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 1,
+        "j": 2,
+        "c": 3
+      },
+      "involves": [
+        1,
+        2,
+        3
+      ],
+      "direction": "<=",
+      "threshold": 14.933824,
+      "coef": -0.190935409564218,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "tip_to_wrist_4_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 0,
+        "b": 4
+      },
+      "involves": [
+        0,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 0.1603311,
+      "coef": -0.0815534292198835,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_mcp_tip_thumb",
+      "kind": "distance",
+      "params": {
+        "a": 2,
+        "b": 4
+      },
+      "involves": [
+        2,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 0.027013749,
+      "coef": -0.4773682837884156,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "dist_12_16_over_9_13",
+      "kind": "distance_over_pair",
+      "params": {
+        "a": 12,
+        "b": 16,
+        "p": 9,
+        "q": 13
+      },
+      "involves": [
+        12,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.77099849,
+      "coef": -0.1403718345191514,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "span_4_0_8",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 4,
+        "j": 0,
+        "c": 8
+      },
+      "involves": [
+        0,
+        4,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 9.3410175,
+      "coef": -0.2598361331597424,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_ori_1_2_local",
+      "kind": "bone_orientation_local",
+      "params": {
+        "a": 1,
+        "b": 2,
+        "ref_a": 0,
+        "ref_b": 9
+      },
+      "involves": [
+        1,
+        2
+      ],
+      "direction": "<=",
+      "threshold": 9.1687162,
+      "coef": -0.042420555783764,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_len_14_15_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 14,
+        "b": 15
+      },
+      "involves": [
+        14,
+        15
+      ],
+      "direction": "<=",
+      "threshold": 0.042905973,
+      "coef": -0.1268144636228873,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "angle_6",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 5,
+        "j": 6,
+        "c": 7
+      },
+      "involves": [
+        5,
+        6,
+        7
+      ],
+      "direction": "<=",
+      "threshold": 29.206303,
+      "coef": -0.1213702786215657,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "angle_3",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 2,
+        "j": 3,
+        "c": 4
+      },
+      "involves": [
+        2,
+        3,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 14.366643,
+      "coef": -0.359015522599441,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "ext_ratio_index",
+      "kind": "extension_ratio",
+      "params": {
+        "bones": [
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "mcp": 5,
+        "tip": 8
+      },
+      "involves": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 0.25643438,
+      "coef": -0.3805524053146027,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "bone_len_10_11_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 10,
+        "b": 11
+      },
+      "involves": [
+        10,
+        11
+      ],
+      "direction": "<=",
+      "threshold": 0.051913454,
+      "coef": -0.0381277102973558,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "ext_ratio_thumb",
+      "kind": "extension_ratio",
+      "params": {
+        "bones": [
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "mcp": 2,
+        "tip": 4
+      },
+      "involves": [
+        2,
+        3,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 0.050179842,
+      "coef": -0.0417097573236663,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "angle_7",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 6,
+        "j": 7,
+        "c": 8
+      },
+      "involves": [
+        6,
+        7,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 3.6300008,
+      "coef": -0.0528024153696888,
+      "comparison": "abs_diff"
+    }
+  ]
+}

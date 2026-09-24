@@ -1,0 +1,434 @@
+/* balloon_game/style.css — carnival palette carried over from the design
+   mockup (claude.ai/artifact/8zYsfgSsBCLz4R7S544J8x), wired to a real
+   webcam feed + real reference clips instead of placeholders. */
+
+:root{
+  color-scheme: light;
+  --page-bg: #F6F2E9;
+  --page-ink: #201C16;
+  --page-ink-soft: #6B6255;
+  --frame-edge: #E7DECB;
+
+  --cam-bg-1: #2A2438;
+  --cam-bg-2: #171320;
+
+  --ink: #1B2420;
+  --ink-soft: #4B5A52;
+  --paper: #FFFFFF;
+  --paper-soft: #F4F1E8;
+  --line: rgba(27,36,32,.18);
+
+  --balloon-a: #FF6B57; --balloon-a-d: #D6432F;
+  --balloon-b: #FFC145; --balloon-b-d: #E29A16;
+  --balloon-c: #37B7A0; --balloon-c-d: #1E8E7A;
+  --balloon-d: #8C7AE6; --balloon-d-d: #6553C9;
+
+  --good: #2E9E5B;
+  --good-soft: #E4F5EA;
+  --bad: #E0473A;
+  --bad-soft: #FCE7E4;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --page-bg: #100E1A;
+    --page-ink: #F1ECE0;
+    --page-ink-soft: #A79E8E;
+    --frame-edge: #2B2740;
+
+    --cam-bg-1: #241F30;
+    --cam-bg-2: #121019;
+
+    --ink: #F1ECE0;
+    --ink-soft: #B9C2BA;
+    --paper: #1D1B2C;
+    --paper-soft: #242236;
+    --line: rgba(241,236,224,.16);
+
+    --balloon-a: #FF7C67; --balloon-a-d: #D6432F;
+    --balloon-b: #FFCB5E; --balloon-b-d: #E29A16;
+    --balloon-c: #43CDB4; --balloon-c-d: #1E8E7A;
+    --balloon-d: #A392F2; --balloon-d-d: #6553C9;
+
+    --good: #3FBE74;
+    --good-soft: #163B27;
+    --bad: #FF5B4D;
+    --bad-soft: #3B1C1A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page-bg: #100E1A;
+  --page-ink: #F1ECE0;
+  --page-ink-soft: #A79E8E;
+  --frame-edge: #2B2740;
+
+  --cam-bg-1: #241F30;
+  --cam-bg-2: #121019;
+
+  --ink: #F1ECE0;
+  --ink-soft: #B9C2BA;
+  --paper: #1D1B2C;
+  --paper-soft: #242236;
+  --line: rgba(241,236,224,.16);
+
+  --balloon-a: #FF7C67; --balloon-a-d: #D6432F;
+  --balloon-b: #FFCB5E; --balloon-b-d: #E29A16;
+  --balloon-c: #43CDB4; --balloon-c-d: #1E8E7A;
+  --balloon-d: #A392F2; --balloon-d-d: #6553C9;
+
+  --good: #3FBE74;
+  --good-soft: #163B27;
+  --bad: #FF5B4D;
+  --bad-soft: #3B1C1A;
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin: 0; }
+body{
+  background: var(--page-bg);
+  color: var(--page-ink);
+  font-family: "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
+  padding-inline: 16px;
+  padding-block: 32px;
+  display: flex;
+  justify-content: center;
+}
+.page{ width: 100%; max-width: min(1400px, 94vw); }
+
+h1{
+  position: relative; display: inline-block;
+  font-family: "Mali", "Sarabun", sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+h1::after{
+  content: ""; position: absolute; left: 6%; right: 6%; bottom: -6px; height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--balloon-a), var(--balloon-b), var(--balloon-c), var(--balloon-d));
+  opacity: .6;
+}
+.hud-title{ justify-self: center; text-align: center; min-width: 0; }
+
+.frame{
+  background: var(--paper);
+  border: 1px solid var(--frame-edge);
+  border-radius: 28px;
+  padding: 16px;
+  box-shadow: 0 24px 48px -28px rgba(20,16,8,.35);
+}
+
+.debug-panel{
+  margin-top: 12px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #14120c;
+  color: #9CF2C0;
+  font-family: "Menlo", "Consolas", monospace;
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border-radius: 12px;
+  white-space: pre;
+}
+.debug-panel[hidden]{ display: none; }
+
+/* Grid, not flex -- a 1fr/auto/1fr split keeps the title truly centered in
+   the row regardless of how wide hud-left/hud-right end up (unlike
+   justify-content:space-between, which only equalizes the gaps). */
+.hud{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.hud-left, .hud-right{ display: flex; align-items: stretch; gap: 8px; min-width: 0; flex-wrap: wrap; }
+.hud-left{ justify-self: start; }
+.hud-right{ justify-self: end; }
+
+.hud-hint{ flex: 0 0 auto; display: flex; flex-direction: row; align-items: center; gap: 14px; }
+.btn-hint{
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  font-family: "Sarabun", sans-serif; font-weight: 700; font-size: 16px;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  cursor: pointer;
+  transition: color .15s ease, opacity .15s ease;
+}
+.btn-hint:disabled{ opacity: .4; cursor: default; }
+.btn-hint:not(:disabled):hover{ color: var(--balloon-b-d); }
+.btn-hint:focus-visible{ outline: 2px solid var(--balloon-c-d); outline-offset: 2px; border-radius: 6px; }
+.btn-hint .hint-icon{
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid var(--balloon-b-d);
+  color: var(--balloon-b-d);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; font-style: italic; font-family: Georgia, serif;
+  flex: none;
+}
+.btn-hint.active{ color: var(--balloon-b-d); }
+.btn-hint.active .hint-icon{ background: var(--balloon-b); border-color: var(--balloon-b-d); color: #3B2400; }
+
+.btn-restart{ font-size: 16px; padding: 2px 2px; }
+.btn-restart:not(:disabled):hover{ color: var(--balloon-d-d); }
+.btn-restart .restart-icon{ border-color: var(--ink-soft); color: var(--ink-soft); }
+.btn-restart:not(:disabled):hover .restart-icon{ border-color: var(--balloon-d-d); color: var(--balloon-d-d); }
+.btn-restart .restart-icon svg{ width: 15px; height: 15px; }
+
+.hint-panel{
+  flex: 0 0 auto;
+  display: flex;
+}
+.hint-panel[hidden]{ display: none; }
+.hint-video{
+  /* height is normally overridden inline (JS: syncHintVideoHeight,
+     0.75 * viewport height) -- this is only a floor so the element is
+     never sized to 0 (e.g. before that JS has run, or if the viewport
+     itself isn't laid out/measurable yet). width is left to the browser
+     so it follows the video's own native aspect ratio -- never cropped
+     (object-fit) or letterboxed (a forced aspect-ratio box). No
+     frame/background around it -- just the clip. */
+  height: 240px;
+  width: auto;
+  border-radius: 14px;
+  display: block;
+  background: #000;
+}
+
+.hud-card{
+  flex: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 10px 14px;
+}
+.hud-card--caught,
+.hud-card--lives{
+  flex: 0 0 auto;
+  flex-direction: column; justify-content: center; text-align: center; gap: 2px;
+}
+.hud-card--caught .hud-number{ font-size: 34px; }
+
+.hud-number{
+  font-family: "Mali", sans-serif; font-weight: 800; font-size: 28px; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--balloon-c-d);
+}
+.hud-card--lives .hud-number{ color: var(--bad); }
+.hud-number-max{ font-size: 17px; font-weight: 700; opacity: .55; }
+.hud-label-row{
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 4px;
+}
+.hud-label{
+  font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--page-ink-soft);
+}
+
+.pips{ display: flex; gap: 7px; }
+.pip{
+  font-size: 18px; line-height: 1;
+  opacity: .55;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.pip.filled,
+.pip.life.lost{ opacity: 1; transform: scale(1.1); }
+
+.stage-row{ display: flex; align-items: flex-start; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.stage-row.hint-on{ justify-content: flex-start; }
+
+.viewport{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  /* flex-grow:0 -- a fixed preferred size (960px), NOT "grow to fill
+     whatever space is left" -- so showing/hiding the hint panel beside it
+     never changes the webcam's own size. flex-shrink:1 + a real min-width
+     (not 0) still lets it shrink on narrow screens, and forces stage-row's
+     wrap once it hits that floor instead of squeezing arbitrarily small. */
+  flex: 0 1 960px;
+  min-width: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--cam-bg-1), var(--cam-bg-2));
+  isolation: isolate;
+}
+#canvas{
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+
+.rec-badge{
+  position: absolute; top: 10px; left: 10px; z-index: 5;
+  font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #fff;
+  background: rgba(20,18,12,.42);
+  backdrop-filter: blur(3px);
+  padding: 5px 9px 5px 7px;
+  border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.rec-badge[hidden]{ display: none; }
+.rec-dot{
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--bad);
+  animation: blink 1.1s ease-in-out infinite;
+}
+@keyframes blink{ 0%,100%{ opacity: 1; } 50%{ opacity: .25; } }
+
+.hip-hint{
+  position: absolute; left: 50%; top: 50%; z-index: 6;
+  transform: translate(-50%, -50%);
+  font-family: "Mali", "Sarabun", sans-serif;
+  font-weight: 700; font-size: 21px;
+  color: #fff;
+  background: rgba(20,18,12,.72);
+  backdrop-filter: blur(3px);
+  padding: 12px 22px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 10px 24px -10px rgba(0,0,0,.5);
+}
+.hip-hint[hidden]{ display: none; }
+
+.balloon{
+  position: absolute; top: 0; z-index: 3;
+  width: 96px;
+  display: flex; flex-direction: column; align-items: center;
+  transform: translate(-50%, -140%);
+}
+.balloon-body{
+  width: 88px; height: 104px;
+  border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px 10px;
+  position: relative;
+  box-shadow: 0 10px 20px -10px rgba(10,10,10,.4);
+}
+.balloon-body::after{
+  content: ""; position: absolute; top: 16%; left: 22%;
+  width: 22%; height: 15%; border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  filter: blur(.2px);
+}
+.balloon--a .balloon-body{ background: radial-gradient(circle at 34% 26%, color-mix(in srgb, var(--balloon-a) 55%, white), var(--balloon-a) 62%, var(--balloon-a-d) 100%); }
+.balloon--b .balloon-body{ background: radial-gradient(circle at 34% 26%, color-mix(in srgb, var(--balloon-b) 55%, white), var(--balloon-b) 62%, var(--balloon-b-d) 100%); }
+.balloon--c .balloon-body{ background: radial-gradient(circle at 34% 26%, color-mix(in srgb, var(--balloon-c) 55%, white), var(--balloon-c) 62%, var(--balloon-c-d) 100%); }
+.balloon--d .balloon-body{ background: radial-gradient(circle at 34% 26%, color-mix(in srgb, var(--balloon-d) 55%, white), var(--balloon-d) 62%, var(--balloon-d-d) 100%); }
+
+.balloon-word{
+  font-family: "Mali", "Sarabun", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #201810;
+  text-align: center;
+  line-height: 1.12;
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+.balloon-knot{ width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--balloon-a-d); margin-top: -2px; }
+.balloon--a .balloon-knot{ border-top-color: var(--balloon-a-d); }
+.balloon--b .balloon-knot{ border-top-color: var(--balloon-b-d); }
+.balloon--c .balloon-knot{ border-top-color: var(--balloon-c-d); }
+.balloon--d .balloon-knot{ border-top-color: var(--balloon-d-d); }
+.balloon-string{ width: 1.5px; height: 26px; background: rgba(255,255,255,.5); margin-top: 1px; }
+
+.balloon.pop-good, .balloon.pop-bad{ animation: pop-shrink .28s ease forwards; }
+@keyframes pop-shrink{ to{ transform: translate(-50%, -140%) scale(.2); opacity: 0; } }
+
+.burst{ position: absolute; z-index: 6; pointer-events: none; left: 0; top: 0; }
+.burst-ring{
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  transform: translate(-50%,-50%);
+  border: 3px solid var(--good);
+  animation: ring-out .45s ease-out forwards;
+}
+.burst.bad .burst-ring{ border-color: var(--bad); }
+@keyframes ring-out{ to{ width: 90px; height: 90px; opacity: 0; } }
+.shard{
+  position: absolute; width: 7px; height: 7px; border-radius: 2px;
+  background: var(--good);
+  transform: translate(-50%,-50%);
+}
+.burst.bad .shard{ background: var(--bad); border-radius: 50%; }
+
+.feedback{
+  position: absolute; left: 50%; top: 34%; z-index: 7;
+  transform: translate(-50%, -50%) scale(.85);
+  font-family: "Mali", sans-serif; font-weight: 800; font-size: 26px;
+  padding: 8px 20px; border-radius: 14px;
+  opacity: 0; pointer-events: none;
+  white-space: nowrap;
+}
+.feedback--top{ top: 12%; }
+.feedback.show-good, .feedback.show-bad{ animation: feedback-pop .9s ease forwards; }
+.feedback.show-good{ background: var(--good-soft); color: var(--good); }
+.feedback.show-bad{ background: var(--bad-soft); color: var(--bad); }
+@keyframes feedback-pop{
+  0%{ opacity: 0; transform: translate(-50%,-50%) scale(.7); }
+  18%{ opacity: 1; transform: translate(-50%,-50%) scale(1.05); }
+  30%{ transform: translate(-50%,-50%) scale(1); }
+  78%{ opacity: 1; }
+  100%{ opacity: 0; transform: translate(-50%,-62%) scale(1); }
+}
+
+.overlay{
+  position: absolute; inset: 0; z-index: 9;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(15,12,8,.58), rgba(15,12,8,.72));
+  backdrop-filter: blur(2px);
+}
+.overlay[hidden]{ display: none; }
+.overlay-card{ display: flex; flex-direction: column; align-items: center; gap: 13px; }
+.overlay-title{ font-family: "Mali", sans-serif; font-weight: 800; font-size: 28px; color: #fff; text-wrap: balance; }
+.overlay-text{ font-size: 16px; color: rgba(255,255,255,.86); line-height: 1.55; max-width: 34ch; }
+.overlay-text--wide{ max-width: 56ch; }
+.overlay-text[hidden]{ display: none; }
+.overlay-emblem{ font-size: 30px; line-height: 1; letter-spacing: 4px; margin-bottom: 2px; color: #fff; }
+
+.spinner{
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.25);
+  border-top-color: var(--balloon-b);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+.btn-primary{
+  font-family: "Mali", sans-serif; font-weight: 800; font-size: 19px; letter-spacing: .01em;
+  border: none; cursor: pointer;
+  color: #3B2400;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FFE29B, var(--balloon-b));
+  box-shadow: 0 5px 0 var(--balloon-b-d), 0 14px 22px -10px rgba(20,16,8,.45);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 6px 0 var(--balloon-b-d), 0 16px 24px -10px rgba(20,16,8,.45); }
+.btn-primary:active{ transform: translateY(4px); box-shadow: 0 1px 0 var(--balloon-b-d), 0 6px 14px -8px rgba(20,16,8,.4); }
+.btn-primary:focus-visible{ outline: 2px solid var(--balloon-c-d); outline-offset: 3px; }
+.btn-primary:disabled{ opacity: .5; cursor: default; }
+
+@media (prefers-reduced-motion: reduce){
+  .rec-dot{ animation: none; }
+  .balloon, .feedback, .burst-ring, .spinner{ animation-duration: .01ms !important; }
+}
+
+@media (max-width: 760px){
+  /* 1fr/auto/1fr doesn't reflow like a wrapping flex row would -- past a
+     point the title (now large, up to 44px) plus the two card/button
+     groups no longer fit on one line even with wrapping enabled on each
+     piece, so stack them instead of letting them crowd/overlap. Threshold
+     is wide (760px, not just phone-narrow) since the title alone can be
+     quite wide at its max size. */
+  .hud{ grid-template-columns: 1fr; gap: 10px; justify-items: center; }
+  .hud-left, .hud-right{ justify-self: center; }
+}

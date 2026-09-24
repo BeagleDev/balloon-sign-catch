@@ -1,0 +1,415 @@
+{
+  "source": "handcraft_v2_1",
+  "meta": {
+    "n_features": 24,
+    "notes": "Atomic checks extracted from hand_features.py Similarity Method v2.1. tip_combo is flattened into its 3 sub-checks (flexion + mcp_tip + adj_tip); the 'inherit' landmarks (1, 7, 11, 15, 19) accumulate no direct rules, so their v3 verdict falls back to 'same' unless the aggregator sees votes from features that touch them (e.g. flexion at joint 2 votes for landmark 1)."
+  },
+  "features": [
+    {
+      "name": "hc_palm_orientation",
+      "kind": "signed_angle_from_down",
+      "params": {
+        "a": 0,
+        "b": 9
+      },
+      "involves": [
+        0,
+        9
+      ],
+      "direction": "<=",
+      "threshold": 25.0,
+      "coef": 1.0,
+      "comparison": "signed_wrap"
+    },
+    {
+      "name": "hc_flexion_0_1_2",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 0,
+        "j": 1,
+        "c": 2
+      },
+      "involves": [
+        0,
+        1,
+        2
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_1_2_3",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 1,
+        "j": 2,
+        "c": 3
+      },
+      "involves": [
+        1,
+        2,
+        3
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_0_5_6",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 0,
+        "j": 5,
+        "c": 6
+      },
+      "involves": [
+        0,
+        5,
+        6
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_0_9_10",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 0,
+        "j": 9,
+        "c": 10
+      },
+      "involves": [
+        0,
+        9,
+        10
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_0_13_14",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 0,
+        "j": 13,
+        "c": 14
+      },
+      "involves": [
+        0,
+        13,
+        14
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_0_17_18",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 0,
+        "j": 17,
+        "c": 18
+      },
+      "involves": [
+        0,
+        17,
+        18
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_2_3_4",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 2,
+        "j": 3,
+        "c": 4
+      },
+      "involves": [
+        2,
+        3,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_5_6_8",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 5,
+        "j": 6,
+        "c": 8
+      },
+      "involves": [
+        5,
+        6,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_9_10_12",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 9,
+        "j": 10,
+        "c": 12
+      },
+      "involves": [
+        9,
+        10,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_13_14_16",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 13,
+        "j": 14,
+        "c": 16
+      },
+      "involves": [
+        13,
+        14,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_flexion_17_18_20",
+      "kind": "angle_3pt",
+      "params": {
+        "a": 17,
+        "j": 18,
+        "c": 20
+      },
+      "involves": [
+        17,
+        18,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 20.0,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_mcp_tip_2_4_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 2,
+        "b": 4
+      },
+      "involves": [
+        2,
+        4
+      ],
+      "direction": "<=",
+      "threshold": 0.15,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_mcp_tip_5_8_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 5,
+        "b": 8
+      },
+      "involves": [
+        5,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 0.15,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_mcp_tip_9_12_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 9,
+        "b": 12
+      },
+      "involves": [
+        9,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.15,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_mcp_tip_13_16_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 13,
+        "b": 16
+      },
+      "involves": [
+        13,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.15,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_mcp_tip_17_20_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 17,
+        "b": 20
+      },
+      "involves": [
+        17,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.15,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_tip_4_8_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 4,
+        "b": 8
+      },
+      "involves": [
+        4,
+        8
+      ],
+      "direction": "<=",
+      "threshold": 0.2,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_tip_8_12_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 8,
+        "b": 12
+      },
+      "involves": [
+        8,
+        12
+      ],
+      "direction": "<=",
+      "threshold": 0.2,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_tip_12_16_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 12,
+        "b": 16
+      },
+      "involves": [
+        12,
+        16
+      ],
+      "direction": "<=",
+      "threshold": 0.2,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_tip_16_20_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 16,
+        "b": 20
+      },
+      "involves": [
+        16,
+        20
+      ],
+      "direction": "<=",
+      "threshold": 0.2,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_mcp_5_9_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 5,
+        "b": 9
+      },
+      "involves": [
+        5,
+        9
+      ],
+      "direction": "<=",
+      "threshold": 0.08,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_mcp_9_13_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 9,
+        "b": 13
+      },
+      "involves": [
+        9,
+        13
+      ],
+      "direction": "<=",
+      "threshold": 0.08,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    },
+    {
+      "name": "hc_adj_mcp_13_17_over_palm",
+      "kind": "distance_over_palm",
+      "params": {
+        "a": 13,
+        "b": 17
+      },
+      "involves": [
+        13,
+        17
+      ],
+      "direction": "<=",
+      "threshold": 0.08,
+      "coef": 1.0,
+      "comparison": "abs_diff"
+    }
+  ]
+}

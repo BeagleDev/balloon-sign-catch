@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balloon Sign Catch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700;800&family=Sarabun:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+  <div class="frame">
+    <div class="hud">
+      <div class="hud-left">
+        <div class="hud-card hud-card--caught">
+          <div class="hud-number"><span id="num-caught">0</span><span class="hud-number-max">/3</span></div>
+          <div class="hud-label-row">
+            <span class="hud-label">บอลลูน</span>
+            <span class="pips" id="pips-caught"></span>
+          </div>
+        </div>
+
+        <div class="hud-card hud-card--lives">
+          <div class="hud-number"><span id="num-lives">3</span><span class="hud-number-max">/3</span></div>
+          <div class="hud-label-row">
+            <span class="hud-label">จำนวนครั้งที่เหลือ</span>
+            <span class="pips" id="pips-lives"></span>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="hud-title">Balloon &#x1F388; Sign &#x270C; Catch</h1>
+
+      <div class="hud-right">
+        <div class="hud-hint">
+          <button class="btn-hint" id="btn-hint" type="button" aria-pressed="false" disabled>
+            <span class="hint-icon">i</span><span>ตัวช่วย</span>
+          </button>
+          <button class="btn-hint btn-restart" id="btn-restart" type="button" disabled>
+            <span class="hint-icon restart-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 11A8 8 0 1 0 18.6 16"/>
+                <path d="M20 5v6h-6"/>
+              </svg>
+            </span><span>เริ่มใหม่</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-row" id="stage-row">
+      <div class="viewport" id="viewport">
+        <video id="webcam" autoplay muted playsinline hidden></video>
+        <canvas id="canvas"></canvas>
+
+        <span class="rec-badge" id="rec-badge" hidden><span class="rec-dot"></span>processing...</span>
+        <div class="hip-hint" id="hip-hint" hidden>กรุณายืนตรงแล้วให้เห็นถึงมือ</div>
+
+        <div class="overlay" id="overlay-loading">
+          <div class="overlay-card">
+            <div class="spinner"></div>
+            <div class="overlay-title">กรุณารอ...</div>
+            <p class="overlay-text" id="loading-text"></p>
+          </div>
+        </div>
+
+        <div class="overlay" id="overlay-start" hidden>
+          <div class="overlay-card">
+            <div class="overlay-emblem">&#x1F9CD; &#x2192; &#x1F91F;&#x1F448;&#x1F44C; &#x2192; &#x1F9CD;</div>
+            <div class="overlay-title">ยืนตรง &#x2192; ทำท่าตามคำ &#x2192; เอามือลง</div>
+            <p class="overlay-text overlay-text--wide">ทำท่าภาษามือตามคำในลูกบอลลูน ก่อนที่ลูกบอลลูนจะตกลงพื้น</p>
+            <button class="btn-primary" id="btn-start" type="button">เริ่มเล่น</button>
+          </div>
+        </div>
+
+        <div class="overlay" id="overlay-end" hidden>
+          <div class="overlay-card">
+            <div class="overlay-title" id="end-title">Result</div>
+            <p class="overlay-text" id="end-text" hidden></p>
+            <button class="btn-primary" id="btn-again" type="button">เล่นอีกครั้ง</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-panel" id="hint-panel" hidden>
+        <video class="hint-video" id="hint-video" muted playsinline loop></video>
+      </div>
+    </div>
+
+    <pre class="debug-panel" id="debug-panel" hidden></pre>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
