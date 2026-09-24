@@ -1,8 +1,8 @@
 # Balloon Sign Catch
 
 A browser-based sign-language game: sign the Thai word shown on each falling
-balloon before it hits the ground. Runs entirely client-side (MediaPipe 
-for hand + pose via your webcam)
+balloon before it hits the ground. Runs on client-side (MediaPipe 
+for hand + pose via webcam)
 
 ## Setup
 
